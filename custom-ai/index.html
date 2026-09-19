@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Custom AI</title>
+
+<link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+<div class="app">
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <div class="brand">
+            <div class="brand-icon">AI</div>
+
+            <div class="brand-text">
+                <h1>Custom AI</h1>
+                <span>Powered by OpenRouter</span>
+            </div>
+        </div>
+
+        <button
+            class="mobile-close"
+            id="mobileCloseBtn"
+            aria-label="Close menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- NEW CHAT -->
+    <button
+        class="new-chat-btn"
+        id="newChatBtn"
+    >
+        <span class="new-chat-icon">+</span>
+        <span>New Chat</span>
+    </button>
+
+
+    <!-- CHAT HISTORY -->
+    <div class="history-section">
+
+        <div class="history-title">
+            <span>Chat History</span>
+        </div>
+
+        <div
+            class="chat-history"
+            id="chatHistory"
+        ></div>
+
+    </div>
+
+
+    <!-- SIDEBAR BOTTOM -->
+    <div class="sidebar-bottom">
+
+        <button
+            class="sidebar-action"
+            id="settingsBtn"
+        >
+            <span>⚙</span>
+            <span>Settings</span>
+        </button>
+
+        <button
+            class="sidebar-action"
+            id="clearHistoryBtn"
+        >
+            <span>🗑</span>
+            <span>Clear History</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+<main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+            <div class="connection-status">
+                <span class="status-dot"></span>
+                <span>OpenRouter</span>
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <button
+                class="topbar-btn"
+                id="clearChatBtn"
+                title="Clear current chat"
+            >
+                🗑
+            </button>
+
+            <button
+                class="topbar-btn"
+                id="topSettingsBtn"
+                title="Settings"
+            >
+                ⚙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- CHAT CONTAINER -->
+    <section
+        class="chat-container"
+        id="chatContainer"
+    >
+
+        <!-- WELCOME -->
+        <div
+            class="welcome"
+            id="welcome"
+        >
+
+            <div class="welcome-icon">
+                AI
+            </div>
+
+            <h2>
+                Welcome to Custom AI
+            </h2>
+
+            <p>
+                Your personal AI assistant powered by OpenRouter.
+            </p>
+
+
+            <!-- SUGGESTIONS -->
+            <div class="suggestions">
+
+                <button
+                    class="suggestion"
+                    data-prompt="Explain artificial intelligence in simple terms."
+                >
+                    <span>🧠</span>
+                    <span>Explain artificial intelligence</span>
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    data-prompt="Help me write a Python program."
+                >
+                    <span>💻</span>
+                    <span>Help me code</span>
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    data-prompt="Teach me something interesting about science."
+                >
+                    <span>🔬</span>
+                    <span>Teach me something</span>
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    data-prompt="Give me an interesting software project idea."
+                >
+                    <span>🚀</span>
+                    <span>Give me an idea</span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGES -->
+        <div
+            class="messages"
+            id="messages"
+        ></div>
+
+    </section>
+
+
+    <!-- INPUT -->
+    <div class="input-area">
+
+        <div class="input-wrapper">
+
+            <textarea
+                id="messageInput"
+                placeholder="Message Custom AI..."
+                rows="1"
+                autocomplete="off"
+            ></textarea>
+
+            <button
+                class="send-btn"
+                id="sendBtn"
+                title="Send message"
+                aria-label="Send message"
+            >
+                ➤
+            </button>
+
+        </div>
+
+
+        <div class="input-info">
+
+            <span>
+                Custom AI can make mistakes. Check important information.
+            </span>
+
+            <span>
+                OpenRouter • Free Model Router
+            </span>
+
+        </div>
+
+    </div>
+
+</main>
+
+</div>
+
+<!-- SETTINGS MODAL -->
+
+<div
+    class="modal-overlay"
+    id="settingsModal"
+>
+<div class="modal">
+
+    <div class="modal-header">
+
+        <div>
+            <h2>Custom AI Settings</h2>
+
+            <p>
+                Configure your OpenRouter connection.
+            </p>
+        </div>
+
+        <button
+            class="modal-close"
+            id="cancelSettingsBtn"
+            aria-label="Close settings"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <!-- API KEY -->
+        <div class="setting-group">
+
+            <label for="apiKey">
+                OpenRouter API Key
+            </label>
+
+            <div class="api-input">
+
+                <input
+                    type="password"
+                    id="apiKey"
+                    placeholder="sk-or-v1-..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="toggleKey"
+                >
+                    Show
+                </button>
+
+            </div>
+
+            <small>
+                Your API key is stored locally in this browser.
+            </small>
+
+        </div>
+
+
+        <!-- MODEL -->
+        <div class="setting-group">
+
+            <label for="modelSelect">
+                AI Model
+            </label>
+
+            <select id="modelSelect">
+
+                <option value="openrouter/free">
+                    OpenRouter Free — Automatic
+                </option>
+
+            </select>
+
+            <small>
+                OpenRouter automatically selects an available free model.
+            </small>
+
+        </div>
+
+
+        <!-- SYSTEM PROMPT -->
+        <div class="setting-group">
+
+            <label for="systemPrompt">
+                System Prompt
+            </label>
+
+            <textarea
+                id="systemPrompt"
+                rows="5"
+                placeholder="Define how Custom AI should behave..."
+            ></textarea>
+
+            <small>
+                This controls Custom AI's personality and behavior.
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL FOOTER -->
+    <div class="modal-footer">
+
+        <button
+            class="cancel-btn"
+            id="cancelSettingsBtn"
+        >
+            Cancel
+        </button>
+
+        <button
+            class="save-btn"
+            id="saveSettingsBtn"
+        >
+            Save Settings
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
